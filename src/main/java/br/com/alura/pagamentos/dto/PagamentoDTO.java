@@ -22,6 +22,7 @@ public class PagamentoDTO {
         private BigDecimal valor;
 
         @NotBlank
+        @Size(max = 100)
         private String nome;
 
         @NotBlank
