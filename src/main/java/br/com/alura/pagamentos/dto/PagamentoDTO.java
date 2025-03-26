@@ -14,34 +14,35 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public record PagamentoDTO(
+public class PagamentoDTO {
+        private Long id;
+
         @NotNull
         @Positive
-        BigDecimal valor,
+        private BigDecimal valor;
 
         @NotBlank
-        String nome,
+        private String nome;
 
         @NotBlank
         @Size(max = 19)
-        String numero,
+        private String numero;
 
         @NotBlank
         @Size(max = 7)
-        String expiracao,
+        private String expiracao;
 
         @NotBlank
         @Size(min = 3, max = 3)
-        String codigo,
+        private String codigo;
 
         @NotNull
         @Enumerated(EnumType.STRING)
-        Status status,
+        private Status status;
 
         @NotNull
-        Long pedidoId,
+        private Long pedidoId;
 
         @NotNull
-        Long formaDePagamentoId
-) {
+        private Long formaDePagamentoId;
 }
