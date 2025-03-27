@@ -1,5 +1,6 @@
 package br.com.alura.pagamentos.dto;
 
+import br.com.alura.pagamentos.model.ItemDoPedido;
 import br.com.alura.pagamentos.model.Status;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -46,4 +48,6 @@ public class PagamentoDTO {
 
         @NotNull
         private Long formaDePagamentoId;
+
+        private List<ItemDoPedido> itens;
 }

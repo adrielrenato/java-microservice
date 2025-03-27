@@ -35,7 +35,10 @@ public class PagamentoService {
         var pagamento = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException());
 
-        return modelMapper.map(pagamento, PagamentoDTO.class);
+        PagamentoDTO dto = modelMapper.map(pagamento, PagamentoDTO.class);
+        dto.setItens(pedido.obterItensDoPedido(pagamento.getId()).getItens());
+
+        return dto;
     }
 
     public PagamentoDTO criarPagamento(PagamentoDTO dto) {
