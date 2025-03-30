@@ -42,8 +42,7 @@ public class PagamentoController {
     public ResponseEntity<PagamentoDTO> cadastrar(@RequestBody @Valid PagamentoDTO dto, UriComponentsBuilder uriBuilder) {
         PagamentoDTO pagamento = service.criarPagamento(dto);
         URI endereco = uriBuilder.path("/pagamentos/{id}").buildAndExpand(pagamento.getId()).toUri();
-        var message = new Message(("Criei um pagamento com o id" + pagamento.getId()).getBytes());
-        template.send("pagamento.concluido", message);
+        template.convertAndSend("pagamentos.ex", "", pagamento);
 
         return ResponseEntity.created(endereco).body(pagamento);
     }
